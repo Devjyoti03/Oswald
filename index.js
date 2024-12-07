@@ -187,45 +187,45 @@ const displayHelp = () => {
   console.log(chalk.yellow('Usage:'));
   console.log(chalk.bold.white('\nGeneral Commands:'));
   console.log(chalk.blueBright(`
-  oswald help
+  oswaldcrypt help
     - Displays this help information.
 
-  oswald credits
+  oswaldcrypt credits
     - Shows the contributors of the project.
 `));
 
   console.log(chalk.bold.white('\nPipeline Setup Commands:'));
   console.log(chalk.blueBright(`
-  oswald setup-pipeline
+  oswaldcrypt setup-pipeline
     - Sets up the Walrus GitHub Actions workflow for automatic backups.
   
-  oswald remove-pipeline
+  oswaldcrypt remove-pipeline
     - Removes the Walrus GitHub Actions workflow.
 
-  oswald armor-on
+  oswaldcrypt armor-on
     - Activates the Slither security analysis workflow for smart contracts.
 
-  oswald armor-off
+  oswaldcrypt armor-off
     - Deactivates the Slither security analysis workflow.
 `));
 
   console.log(chalk.bold.white('\nConfiguration Commands:'));
   console.log(chalk.blueBright(`
-  oswald setupcreds
+  oswaldcrypt setupcreds
     - Saves your email address for workflow notifications.
 
-  oswald savechain
+  oswaldcrypt savechain
     - Saves a new blockchain network configuration.
 
-  oswald deletechain
+  oswaldcrypt deletechain
     - Deletes an existing blockchain network configuration.
 `));
 
   console.log(chalk.bold.white('\nHardhat Integration Commands:'));
   console.log(chalk.blueBright(`
-  oswald setuphardhat <contract_name> <chain_name>
+  oswaldcrypt setuphardhat <contract_name> <chain_name>
     - Creates a GitHub Actions workflow to deploy a smart contract using Hardhat.
-    - Example: oswald setuphardhat MyContract polygon
+    - Example: oswaldcrypt setuphardhat MyContract polygon
 `));
 
   console.log(chalk.yellowBright('\nFor further details, refer to the documentation or contact support.'));
