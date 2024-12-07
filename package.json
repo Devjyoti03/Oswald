@@ -1,5 +1,5 @@
 {
-  "name": "oswald",
+  "name": "oswaldcrypt",
   "version": "1.0.0",
   "description": "A package to set up a dynamic CI/CD pipeline for backing up Web3 files to walrus storage.",
   "main": "index.js",
