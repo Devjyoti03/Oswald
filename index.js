@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 require('dotenv').config();
-const chalk = require('chalk');
+const chalk = require("chalk");
 
 const shell = require('shelljs');
 const fs = require('fs');
@@ -187,45 +187,45 @@ const displayHelp = () => {
   console.log(chalk.yellow('Usage:'));
   console.log(chalk.bold.white('\nGeneral Commands:'));
   console.log(chalk.blueBright(`
-  oswaldcrypt help
+  oswald help
     - Displays this help information.
 
-  oswaldcrypt credits
+  oswald credits
     - Shows the contributors of the project.
 `));
 
   console.log(chalk.bold.white('\nPipeline Setup Commands:'));
   console.log(chalk.blueBright(`
-  oswaldcrypt setup-pipeline
+  oswald setup-pipeline
     - Sets up the Walrus GitHub Actions workflow for automatic backups.
   
-  oswaldcrypt remove-pipeline
+  oswald remove-pipeline
     - Removes the Walrus GitHub Actions workflow.
 
-  oswaldcrypt armor-on
+  oswald armor-on
     - Activates the Slither security analysis workflow for smart contracts.
 
-  oswaldcrypt armor-off
+  oswald armor-off
     - Deactivates the Slither security analysis workflow.
 `));
 
   console.log(chalk.bold.white('\nConfiguration Commands:'));
   console.log(chalk.blueBright(`
-  oswaldcrypt setupcreds
+  oswald setupcreds
     - Saves your email address for workflow notifications.
 
-  oswaldcrypt savechain
+  oswald savechain
     - Saves a new blockchain network configuration.
 
-  oswaldcrypt deletechain
+  oswald deletechain
     - Deletes an existing blockchain network configuration.
 `));
 
   console.log(chalk.bold.white('\nHardhat Integration Commands:'));
   console.log(chalk.blueBright(`
-  oswaldcrypt setuphardhat <contract_name> <chain_name>
+  oswald setuphardhat <contract_name> <chain_name>
     - Creates a GitHub Actions workflow to deploy a smart contract using Hardhat.
-    - Example: oswaldcrypt setuphardhat MyContract polygon
+    - Example: oswald setuphardhat MyContract polygon
 `));
 
   console.log(chalk.yellowBright('\nFor further details, refer to the documentation or contact support.'));
@@ -355,39 +355,31 @@ function setupHardhatWorkflow(contractName, chainName) {
 
 
 // CLI command
+const commands = {
+  'setup-pipeline': setupOswaldPipeline,
+  'remove-pipeline': removeOswaldPipeline,
+  'armor-on': setupSlitherArmor,
+  'armor-off': removeSlitherArmor,
+  'setupcreds': setupCredentials,
+  'savechain': saveChain,
+  'deletechain': deleteChain,
+  'help': displayHelp,
+  'credits': displayCredits,
+  'backupFiles': backupFiles,
+  'setuphardhat': () => {
+    const contractName = process.argv[3];
+    const chainName = process.argv[4];
+    if (!contractName || !chainName) {
+      console.log(chalk.red('Error: Please provide the contract name and chain name.'));
+      console.log('Usage: oswald setuphardhat <contract_name> <chain_name>');
+    } else {
+      setupHardhatWorkflow(contractName, chainName);
+    }
+  },
+};
 const command = process.argv[2];
-if (command === 'setup-pipeline') {
-  setupOswaldPipeline();
-} else if (command === 'remove-pipeline') {
-  removeOswaldPipeline();
-} else if (command === 'armor-on') {
-  setupSlitherArmor();
-} else if (command === 'armor-off') {
-  removeSlitherArmor();
-} else if (command === 'setupcreds') {
-  setupCredentials();
-} else if (command === 'savechain') {
-  saveChain();
-} else if (command === 'deletechain') {
-  deleteChain();
-} else if (command === 'setuphardhat') {
-  const contractName = process.argv[3];
-  const chainName = process.argv[4];
-  
-  if (!contractName || !chainName) {
-    console.log(chalk.red('Error: Please provide the contract name and chain name.'));
-    console.log('Usage: oswald setuphardhat <contract_name> <chain_name>');
-  } else {
-    setupHardhatWorkflow(contractName, chainName);
-  }
-} else if (command === 'backupFiles') {
-  backupFiles();
-} else if (command === 'help') {
-  displayHelp();
-} else if (command === 'credits') {
-  displayCredits(); 
+if (commands[command]) {
+  commands[command]();
 } else {
   console.log('Unknown command. Use "oswald help" to display available commands.');
 }
-
-// changes

@@ -1,10 +1,10 @@
 {
   "name": "oswaldcrypt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A package to set up a dynamic CI/CD pipeline for backing up Web3 files to walrus storage.",
   "main": "index.js",
   "bin": {
-    "oswaldcrypt": "index.js"
+    "oswald": "index.js"
   },
   "scripts": {
     "backup": "node backup.js"
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/Devjyoti03/Oswald#readme",
   "dependencies": {
     "axios": "^1.7.9",
-    "chalk": "^5.3.0",
+    "chalk": "^4.1.2",
     "dotenv": "^16.4.7",
     "ethers": "^6.13.4",
     "figlet": "^1.8.0",
