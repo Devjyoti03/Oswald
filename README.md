@@ -35,16 +35,3 @@ Install Oswald via npm:
 
 ```npm install oswald```
 
-⚙️ How It Works
-Commit Storage:
-Oswald captures each commit and securely stores it on the blockchain using the Walrus platform.
-
-Smart Contract Audit:
-Automatically scans and validates uploaded smart contracts, ensuring compliance with best practices.
-
-CI/CD Integration:
-Oswald seamlessly integrates into DevOps pipelines, triggering backups during deployment stages.
-
-
-
-
