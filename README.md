@@ -1,37 +1,26 @@
 # Oswald
+# Summary
 
-**Oswald** is an npm package designed to ensure the safety and longevity of your codebase. It acts as a blockchain-powered safety net, backing up your commits while seamlessly integrating with GitHub. Whether it's an unintended deletion or a disruptive event, Oswald ensures your code is always retrievable. It also brings advanced functionality like auto-auditing for smart contracts, making it a valuable tool for modern developers.
-
----
-
-## 📌 Table of Contents
-
-- [Features](#-features)  
-- [Installation](#-installation)  
-- [Usage](#-usage)  
-- [How It Works](#-how-it-works)  
-- [Tech Stack](#-tech-stack)  
-- [Contributing](#-contributing)  
-- [License](#-license)  
-- [Support](#-support)
+Oswald bridges the gap in modern development pipelines by offering secure on-chain storage, automated auditing of smart contracts, and streamlined deployment to EVM-compatible chains. It ensures transparency, immutability, and efficiency in Web3 integration within DevOps workflows. Through overcoming challenges like connectivity issues, deployment complexities, and agent integration, Oswald delivers a robust and scalable solution tailored for developers embracing decentralized technology.
 
 ---
 
-## 🚀 Features
+# The Problem Oswald Solves
 
-- **Seamless GitHub Integration**: Works with GitHub without requiring any migration.  
-- **Blockchain-Powered Backups**: Immutably stores commits on the blockchain using [Walrus](https://example.com).  
-- **Flexible Backup Options**:  
-  - Per-Commit Backup: Save every commit automatically.  
-  - Daily Backup: Store repository snapshots once a day.  
-- **Smart Contract Auto-Audits**: Automatically checks uploaded smart contracts for consistency and security.  
-- **DevOps Ready**: Fully integrates into CI/CD pipelines for modern workflows.
+## The Problem It Solves
+
+Modern development pipelines lack a seamless way to:
+
+- **Store codebases securely on-chain** to ensure immutability and transparency.
+- **Audit and validate smart contracts** collaboratively and efficiently during the CI/CD process.
+- **Streamline deployment of smart contracts** to EVM-compatible chains with built-in safety checks.
+
+## How It Helps
+
+- **Secure On-Chain Storage:** Safeguard your codebase or files with decentralized storage, ensuring transparency and tamper-proof history.
+- **Automated Audits:** Enable multiple agents to audit smart contracts in your CI/CD pipeline, reaching a consensus before approval.
+- **Safe & Hassle-Free Deployment:** Simplify the process of deploying validated contracts to EVM chains with just a click.
+
+This tool enhances security, reliability, and efficiency for developers, making Web3 integration in DevOps workflows easier than ever.
 
 ---
-
-## 🔧 Installation
-
-Install Oswald via npm:
-
-```npm install oswald```
-
