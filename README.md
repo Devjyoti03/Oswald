@@ -1,21 +1,20 @@
-# Oswald
+# Summary
 
-**Oswald** is an npm package designed to ensure the safety and longevity of your codebase. It acts as a blockchain-powered safety net, backing up your commits while seamlessly integrating with GitHub. Whether it's an unintended deletion or a disruptive event, Oswald ensures your code is always retrievable. It also brings advanced functionality like auto-auditing for smart contracts, making it a valuable tool for modern developers.
-
----
-
-## 📌 Table of Contents
-
-- [Features](#-features)  
-- [Installation](#-installation)  
-- [Usage](#-usage)  
-- [How It Works](#-how-it-works)  
-- [Tech Stack](#-tech-stack)  
-- [Contributing](#-contributing)  
-- [License](#-license)  
-- [Support](#-support)
+Oswald bridges the gap in modern development pipelines by offering secure on-chain storage, automated auditing of smart contracts, and streamlined deployment to EVM-compatible chains. It ensures transparency, immutability, and efficiency in Web3 integration within DevOps workflows. Through overcoming challenges like connectivity issues, deployment complexities, and agent integration, Oswald delivers a robust and scalable solution tailored for developers embracing decentralized technology.
 
 ---
+
+# Table of Contents
+
+1. [The Problem Oswald Solves](#the-problem-oswald-solves)
+   - [The Problem It Solves](#the-problem-it-solves)
+   - [How It Helps](#how-it-helps)
+2. [Challenges We Ran Into](#challenges-we-ran-into)
+   - [Bad Internet Connectivity](#bad-internet-connectivity)
+   - [Implementing the Deployment Process](#implementing-the-deployment-process)
+   - [Integrating Agents like Quillshield and Slither](#integrating-agents-like-quillshield-and-slither)
+   - [Walrus SDK Limitations](#walrus-sdk-limitations)
+
 
 # The Problem Oswald Solves
 
