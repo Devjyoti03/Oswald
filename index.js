@@ -254,7 +254,7 @@ const setupConsensus = () => {
 
   const workflowContent = `
 
-name: Consensus Report with Gemini API
+name: Proving Consensus between audits
 
 on:
   push:
