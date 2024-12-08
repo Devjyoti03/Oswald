@@ -504,6 +504,8 @@ const commands = {
   'armor-on': setupSlitherArmor,
   'armor-off': removeSlitherArmor,
   'setupcreds': setupCredentials,
+  'consensus': setupConsensus,
+  'quill': setupQuillShieldWorkflow,
   'savechain': saveChain,
   'deletechain': deleteChain,
   'help': displayHelp,
