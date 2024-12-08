@@ -180,6 +180,69 @@ const removeSlitherArmor = () => {
   }
 };
 
+const setupQuillShieldWorkflow = () => {
+  const workflowsDir = '.github/workflows';
+  const quillShieldWorkflowPath = path.join(workflowsDir, 'quillshield.yml');
+
+  if (!fs.existsSync(workflowsDir)) {
+    fs.mkdirSync(workflowsDir, { recursive: true });
+    console.log(chalk.cyan(`Created '${workflowsDir}' directory.`));
+  }
+
+  const workflowContent = `
+
+name: QuillShield Audit
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  schedule:
+    - cron: "0 8 * * 2" # Runs every Tuesday at 8 AM UTC
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install  
+
+      - name: Run QuillShield Audit
+        run: node quillshield.js
+        env: 
+          UPLOAD_ID: \${{ secrets.UPLOAD_ID }}
+          USER_ID: \${{ secrets.USER_ID }}
+          API_KEY: \${{ secrets.API_KEY }}
+
+      - name: Upload Contract Files
+        uses: actions/upload-artifact@v3
+        with:
+          name: contracts-files
+          path: contracts/*
+
+      - name: Upload Audit Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: quillshield-report
+          path: quillshield-report.json  # Path to the generated report in the root directory
+
+
+
+  `;
+
+  fs.writeFileSync(quillShieldWorkflowPath, workflowContent);
+  console.log(chalk.greenBright(`Created '${quillShieldWorkflowPath}' successfully.`));
+};
+
 const displayHelp = () => {
   displayAsciiArt();
 
