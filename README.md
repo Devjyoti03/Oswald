@@ -4,14 +4,6 @@ Oswald bridges the gap in modern development pipelines by offering secure on-cha
 
 ---
 
-# Table of Contents
-
-1. [The Problem Oswald Solves](#the-problem-oswald-solves)
-   - [The Problem It Solves](#the-problem-it-solves)
-   - [How It Helps](#how-it-helps)
-
-
-
 # The Problem Oswald Solves
 
 ## The Problem It Solves
