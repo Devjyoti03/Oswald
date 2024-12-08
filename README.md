@@ -1,3 +1,4 @@
+# Oswald
 # Summary
 
 Oswald bridges the gap in modern development pipelines by offering secure on-chain storage, automated auditing of smart contracts, and streamlined deployment to EVM-compatible chains. It ensures transparency, immutability, and efficiency in Web3 integration within DevOps workflows. Through overcoming challenges like connectivity issues, deployment complexities, and agent integration, Oswald delivers a robust and scalable solution tailored for developers embracing decentralized technology.
