@@ -17,21 +17,43 @@
 
 ---
 
-## 🚀 Features
+# The Problem Oswald Solves
 
-- **Seamless GitHub Integration**: Works with GitHub without requiring any migration.  
-- **Blockchain-Powered Backups**: Immutably stores commits on the blockchain using [Walrus](https://example.com).  
-- **Flexible Backup Options**:  
-  - Per-Commit Backup: Save every commit automatically.  
-  - Daily Backup: Store repository snapshots once a day.  
-- **Smart Contract Auto-Audits**: Automatically checks uploaded smart contracts for consistency and security.  
-- **DevOps Ready**: Fully integrates into CI/CD pipelines for modern workflows.
+## The Problem It Solves
+
+Modern development pipelines lack a seamless way to:
+
+- **Store codebases securely on-chain** to ensure immutability and transparency.
+- **Audit and validate smart contracts** collaboratively and efficiently during the CI/CD process.
+- **Streamline deployment of smart contracts** to EVM-compatible chains with built-in safety checks.
+
+## How It Helps
+
+- **Secure On-Chain Storage:** Safeguard your codebase or files with decentralized storage, ensuring transparency and tamper-proof history.
+- **Automated Audits:** Enable multiple agents to audit smart contracts in your CI/CD pipeline, reaching a consensus before approval.
+- **Safe & Hassle-Free Deployment:** Simplify the process of deploying validated contracts to EVM chains with just a click.
+
+This tool enhances security, reliability, and efficiency for developers, making Web3 integration in DevOps workflows easier than ever.
 
 ---
 
-## 🔧 Installation
+# Challenges We Ran Into
 
-Install Oswald via npm:
+Building this project was an exciting yet challenging journey. Here are some key hurdles we faced and how we overcame them:
 
-```npm install oswald```
+### Bad Internet Connectivity
+- **Challenge:** During development and testing, poor internet slowed down interactions with on-chain data and CI/CD workflows.
+- **Solution:** We optimized API calls and testing environments to minimize reliance on constant connectivity, ensuring smoother development.
+
+### Implementing the Deployment Process
+- **Challenge:** Streamlining the deployment of smart contracts while ensuring proper validation was complex.
+- **Solution:** We integrated deployment tools with safeguards like EVM-compatible checks, automating most tasks for consistency.
+
+### Integrating Agents like Quillshield and Slither
+- **Challenge:** Setting up multiple agents to independently audit contracts and reach a consensus was technically demanding.
+- **Solution:** We designed a modular architecture where each agent runs independently in the CI/CD pipeline, then collates results for a unified decision.
+
+### Walrus SDK Limitations
+- **Challenge:** Walrus had no SDK, and its minimum file size requirement made storing entire codebases a major challenge.
+- **Solution:** We built custom wrappers for Walrus integration and chunked the codebase into manageable parts, ensuring compatibility while maintaining efficiency.
 
