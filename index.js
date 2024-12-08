@@ -243,6 +243,86 @@ jobs:
   console.log(chalk.greenBright(`Created '${quillShieldWorkflowPath}' successfully.`));
 };
 
+const setupConsensus = () => {
+  const workflowsDir = '.github/workflows';
+  const ConsensusWorkflowPath = path.join(workflowsDir, 'consensus.yml');
+
+  if (!fs.existsSync(workflowsDir)) {
+    fs.mkdirSync(workflowsDir, { recursive: true });
+    console.log(chalk.cyan(`Created '${workflowsDir}' directory.`));
+  }
+
+  const workflowContent = `
+
+name: Consensus Report with Gemini API
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  consensus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Find Consensus
+        run: node consensus.js
+        env:
+          GEMINI_API_KEY: \${{ secrets.GEMINI_API_KEY }}
+
+      - name: Upload Consensus Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: consensus-report
+          path: consensus-report.json
+
+
+  `;
+
+  fs.writeFileSync(ConsensusWorkflowPath, workflowContent);
+  console.log(chalk.greenBright(`Created '${ConsensusWorkflowPath}' successfully.`));
+};
+
+const analyzeWithConsensus = async (targetDir, targetFile) => {
+  try {
+    const [slitherResults, mythrilResults] = await Promise.all([
+      runSlither(targetDir),
+      runMythril(targetFile),
+    ]);
+
+    console.log(chalk.green('Slither Results:'), slitherResults);
+    console.log(chalk.green('Mythril Results:'), mythrilResults);
+
+    const consensusIssues = slitherResults.issues.filter((issue) =>
+      mythrilResults.some((mythrilIssue) => mythrilIssue.swcID === issue.swcID)
+    );
+
+    if (consensusIssues.length > 0) {
+      console.log(chalk.red('Consensus Issues Detected:'), consensusIssues);
+    } else {
+      console.log(chalk.green('No consensus issues detected.'));
+    }
+
+    return consensusIssues;
+  } catch (err) {
+    console.error(chalk.red('Error during analysis:'), err);
+    throw err;
+  }
+};
+
 const displayHelp = () => {
   displayAsciiArt();
 
